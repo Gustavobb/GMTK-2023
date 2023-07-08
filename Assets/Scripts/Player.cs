@@ -10,7 +10,6 @@ public class Player : Entity
     [SerializeField] protected float rotationSpeed = 75f; 
     private float shootTimer;
 
-
     private void OnEnable()
     {
         switch (type)
@@ -43,10 +42,8 @@ public class Player : Entity
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
-
         shootTimer -= Time.deltaTime;
         if (shootTimer <= 0f)
         {
@@ -66,7 +63,8 @@ public class Player : Entity
     protected override void Move()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Rotate(Vector3.forward * -horizontalInput * rotationSpeed * Time.deltaTime);
+        float rotation = _rigidbody2D.rotation - horizontalInput * rotationSpeed * Time.deltaTime;
+        _rigidbody2D.MoveRotation(rotation);
 
         // transform.Translate(Vector3.up * verticalInput * speed * Time.deltaTime);
         float verticalInput = Input.GetAxis("Vertical");
