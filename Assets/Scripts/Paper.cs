@@ -24,7 +24,7 @@ public class Paper : Entity
             if (entityManager.paperPointsTo[i] != EntityManager.Type.Paper)
                 HandlePointsTo(entityManager.paperPointsTo[i], ref minDistance, i);
 
-        return minDistance.normalized * speed * Time.deltaTime;
+        return minDistance.normalized;
     }
 
     protected override Vector2 SeekNonTargets()
@@ -36,6 +36,6 @@ public class Paper : Entity
         for (int i = 0; i < entityManager.paperPointsFrom.Count; i++)
             HandlePointsFrom(entityManager.paperPointsFrom[i], ref result);
 
-        return result.normalized * speed * Time.deltaTime;
+        return result.normalized;
     }
 }
