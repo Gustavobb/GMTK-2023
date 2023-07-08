@@ -40,9 +40,17 @@ public class Player : Entity
 
     protected override void Move()
     {
-        velocity += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed * Time.deltaTime;
+        float verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.up * verticalInput * speed * Time.deltaTime);
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Rotate(Vector3.forward * -horizontalInput * rotationSpeed * Time.deltaTime);
+
+        /*
+        velocity += Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         velocity *= (1f - friction);
         velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);
+        */
     }
 }
