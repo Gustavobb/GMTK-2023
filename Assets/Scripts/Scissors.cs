@@ -24,7 +24,7 @@ public class Scissors : Entity
             if (entityManager.scissorsPointsTo[i] != EntityManager.Type.Scissors)
                 HandlePointsTo(entityManager.scissorsPointsTo[i], ref minDistance, i);
 
-        return minDistance.normalized * speed * Time.deltaTime;
+        return minDistance.normalized;
     }
     
     protected override Vector2 SeekNonTargets()
@@ -36,6 +36,6 @@ public class Scissors : Entity
         for (int i = 0; i < entityManager.scissorsPointsFrom.Count; i++)
             HandlePointsFrom(entityManager.scissorsPointsFrom[i], ref result);
 
-        return result.normalized * speed * Time.deltaTime;
+        return result.normalized;
     }
 }

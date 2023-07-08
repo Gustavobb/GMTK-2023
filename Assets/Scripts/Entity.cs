@@ -21,8 +21,10 @@ public class Entity : MonoBehaviour
 
     protected virtual void Move()
     {
-        Vector2 curr = SeekTargets() * entityManager.weight.x + SeekNonTargets() * entityManager.weight.y + SeekObstacles() * entityManager.weight.z;
-        velocity += curr;
+        Vector2 curr = SeekTargets() * entityManager.weight.x + SeekNonTargets() * entityManager.weight.y;
+        SeekObstacles(ref curr);
+        velocity += curr.normalized * speed * Time.deltaTime;
+        Debug.DrawRay(transform.position, velocity.normalized, Color.red);
         velocity *= (1f - friction);
         velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);
@@ -217,83 +219,25 @@ public class Entity : MonoBehaviour
         }
     }
 
-    protected virtual Vector2 SeekObstacles()
+    protected virtual void SeekObstacles(ref Vector2 curr)
     {
-        // 4 raycast to check for obstacles in 4 directions
-        Vector2 result = Vector2.zero;
-        float force = 0f;
         RaycastHit2D hit;
-        Vector2[] directions = new Vector2[2];
-        bool vertical = false;
-        bool horizontal = false;
+        Vector2[] directions = new Vector2[4] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
+        float rotAngle = 0f;
+        bool clockwise = Vector2.SignedAngle(Vector2.left, curr) > 180f;
 
-        hit = Physics2D.Raycast(transform.position, Vector2.up, 1f, obstacleLayerMask);
-        if (hit.collider != null)
+        hit = Physics2D.Raycast(transform.position, curr.normalized, 1f, obstacleLayerMask);
+        if (!hit.collider)
+            return;
+
+        for (int i = 0; i < 4; i++)
         {
-            force = 1 / Mathf.Pow(hit.distance, 2);
-            result += Vector2.up * force;
-            vertical = true;
+            hit = Physics2D.Raycast(transform.position, directions[i], 1f, obstacleLayerMask);
+            if (hit.collider != null)
+                rotAngle = clockwise ? -90f : 90f;
         }
 
-        hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, obstacleLayerMask);
-        if (hit.collider != null)
-        {
-            force = 1 / Mathf.Pow(hit.distance, 2);
-            result += Vector2.down * force;
-            vertical = true;
-        }
-
-        if (vertical)
-        {
-            directions[0] = Vector2.left;
-            directions[1] = Vector2.right;
-
-            for (int i = 0; i < directions.Length; i++)
-            {
-                hit = Physics2D.Raycast(transform.position, directions[i], 3f, obstacleLayerMask);
-                Debug.DrawRay(transform.position, directions[i] * 3f, Color.red);
-                if (hit.collider == null)
-                {
-                    result -= directions[i] * force;
-                    break;
-                }
-            }
-        }
-        
-        hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, obstacleLayerMask);
-        if (hit.collider != null)
-        {
-            force = 1 / Mathf.Pow(hit.distance, 2);
-            result += Vector2.left * force;
-            horizontal = true;
-        }
-
-        hit = Physics2D.Raycast(transform.position, Vector2.right, 1f, obstacleLayerMask);
-        if (hit.collider != null)
-        {
-            force = 1 / Mathf.Pow(hit.distance, 2);
-            result += Vector2.right * force;
-            horizontal = true;
-        }
-
-        if (horizontal)
-        {
-            directions[0] = Vector2.up;
-            directions[1] = Vector2.down;
-
-            for (int i = 0; i < directions.Length; i++)
-            {
-                hit = Physics2D.Raycast(transform.position, directions[i], 3f, obstacleLayerMask);
-                Debug.DrawRay(transform.position, directions[i] * 3f, Color.red);
-                if (hit.collider == null)
-                {
-                    result -= directions[i] * force;
-                    break;
-                }
-            }
-        }
-
-        return -result.normalized * speed * Time.deltaTime;
+        curr = Quaternion.Euler(0, 0, rotAngle) * curr;
     }
 
     public void Die()
