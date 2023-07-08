@@ -13,7 +13,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask obstacleLayerMask;
     protected Vector2 velocity;
     
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         Move();
     }
