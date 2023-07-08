@@ -5,6 +5,11 @@ using UnityEngine;
 public class Player : Entity
 {
     [SerializeField] private EntityManager.Type type;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private float shootInterval = 3f;
+    [SerializeField] protected float rotationSpeed = 75f; 
+    private float shootTimer;
+
 
     private void OnEnable()
     {
@@ -38,8 +43,31 @@ public class Player : Entity
         }
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+        shootTimer -= Time.deltaTime;
+        if (shootTimer <= 0f)
+        {
+            ShootProjectile();
+            shootTimer = shootInterval;
+        }
+    }
+
+    private void ShootProjectile()
+    {
+        Vector3 spawnPosition = transform.position + transform.up;
+
+        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, transform.rotation);
+
+    }
+
     protected override void Move()
     {
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.angularVelocity = 0f;
+
         float verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.up * verticalInput * speed * Time.deltaTime);
 

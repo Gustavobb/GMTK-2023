@@ -5,7 +5,6 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [SerializeField] protected float speed = 5f;
-    [SerializeField] protected float rotationSpeed = 75f;
     [SerializeField] protected float friction = 0.1f;
     [SerializeField] protected float MAX_SPEED = 5f;
     [SerializeField] protected float radius = 1f;
