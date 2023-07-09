@@ -39,10 +39,10 @@ Shader "Custom/Effects"
             }
 
             sampler2D _MainTex;
-			float2 _DoodleMaxOffset;  // - How far the UV can be distorted
-			float _DoodleFrameTime;   // - How long does a frame last
-			int _DoodleFrameCount;    // - How many frames per animation
-			float2 _DoodleNoiseScale; // - How noisy should the effect be
+			float2 _DoodleMaxOffset;
+			float _DoodleFrameTime;
+			int _DoodleFrameCount;
+			float2 _DoodleNoiseScale;
 
             float random(float2 seed)
             {
@@ -81,6 +81,11 @@ Shader "Custom/Effects"
 				offset = DoodleTextureOffset(i.uv, _DoodleMaxOffset, _Time.y, _DoodleFrameTime, _DoodleFrameCount,_DoodleNoiseScale); 
 
 				fixed4 col = tex2D(_MainTex, i.uv + offset);
+
+                float x = (i.uv.x + 4.0 ) * (i.uv.y + 4.0 ) * (_Time.y * 10.0);
+                fixed4 grain = fmod((fmod(x, 13.0) + 1.0) * (fmod(x, 123.0) + 1.0), 0.01) - 0.005;
+                col += grain * 10.0;
+                
                 return col;
             }
             ENDCG

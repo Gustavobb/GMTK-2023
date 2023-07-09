@@ -31,7 +31,10 @@ Material:
     - _DoodleFrameTime: 0.5
     - _DoodleFreq: 99
     - _DoodleSpeed: 0.3
+    - _SobelThickness: 0.43
+    - _SobelThreshold: 0.06
     m_Colors:
-    - _DoodleMaxOffset: {r: 0.003, g: 0.003, b: 0, a: 0}
+    - _DoodleMaxOffset: {r: 0.0025, g: 0.0025, b: 0, a: 0}
     - _DoodleNoiseScale: {r: 35, g: 35, b: 1, a: 1}
+    - _SobelColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
   m_BuildTextureStacks: []

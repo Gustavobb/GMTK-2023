@@ -7,7 +7,8 @@ public class Player : Entity
     [SerializeField] private EntityManager.Type type;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float shootInterval = 3f;
-    [SerializeField] protected float rotationSpeed = 75f; 
+    [SerializeField] protected float rotationSpeed = 75f;
+    [SerializeField] private GameObject sprite;
     private float shootTimer;
 
     private void OnEnable()
@@ -54,21 +55,19 @@ public class Player : Entity
 
     private void ShootProjectile()
     {
-        Vector3 spawnPosition = transform.position + transform.up;
-
-        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, transform.rotation);
-
+        Vector3 spawnPosition = transform.position;
+        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, sprite.transform.rotation);
     }
 
     protected override void Move()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        float rotation = _rigidbody2D.rotation - horizontalInput * rotationSpeed * Time.deltaTime;
-        _rigidbody2D.MoveRotation(rotation);
+        Quaternion rotation = Quaternion.Euler(0f, 0f, -horizontalInput * rotationSpeed * Time.deltaTime);
+        sprite.transform.rotation *= rotation;
 
         // transform.Translate(Vector3.up * verticalInput * speed * Time.deltaTime);
         float verticalInput = Input.GetAxis("Vertical");
-        velocity += (Vector2)transform.up * verticalInput * speed * Time.deltaTime;
+        velocity += (Vector2)(sprite.transform.rotation * transform.up) * verticalInput * speed * Time.deltaTime;
         velocity *= (1f - friction);
         velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);

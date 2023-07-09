@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Rigidbody2D _rigidbody2D;
     [SerializeField] protected EntityManager entityManager;
     [SerializeField] protected LayerMask obstacleLayerMask;
+    [SerializeField] protected GameObject velocityArrowSprite;
     protected Vector2 velocity;
     
     protected virtual void FixedUpdate()
@@ -24,6 +25,10 @@ public class Entity : MonoBehaviour
         SeekObstacles(ref curr);
         velocity += curr.normalized * speed * Time.deltaTime;
         Debug.DrawRay(transform.position, velocity.normalized, Color.red);
+        
+        if (velocity != Vector2.zero)
+            velocityArrowSprite.transform.RotateAround(transform.position, Vector3.forward, Vector3.SignedAngle(velocityArrowSprite.transform.up, velocity, Vector3.forward) + 90f);
+
         velocity *= (1f - friction);
         velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);
@@ -47,7 +52,7 @@ public class Entity : MonoBehaviour
             return Vector2.zero;
 
         Vector2 minDistance = (Vector2)(entityManager.rockEntities[0].transform.position - transform.position);
-        if (minDistance.magnitude < 0.5f) 
+        if (minDistance.magnitude < entityManager.distanceToKill) 
         {
             entityManager.rockEntities[0].Die();
             return Vector2.zero;
@@ -55,7 +60,7 @@ public class Entity : MonoBehaviour
         for (int i = 1; i < entityManager.rockEntities.Count; i++)
         {
             Vector2 distance = (Vector2)(entityManager.rockEntities[i].transform.position - transform.position);
-            if (distance.magnitude < 0.5f)
+            if (distance.magnitude < entityManager.distanceToKill)
             {
                 entityManager.rockEntities[i].Die();
                 return Vector2.zero;
@@ -73,7 +78,7 @@ public class Entity : MonoBehaviour
             return Vector2.zero;
 
         Vector2 minDistance = (Vector2)(entityManager.paperEntities[0].transform.position - transform.position);
-        if (minDistance.magnitude < 0.5f) 
+        if (minDistance.magnitude < entityManager.distanceToKill) 
         {
             entityManager.paperEntities[0].Die();
             return Vector2.zero;
@@ -81,7 +86,7 @@ public class Entity : MonoBehaviour
         for (int i = 1; i < entityManager.paperEntities.Count; i++)
         {
             Vector2 distance = (Vector2)(entityManager.paperEntities[i].transform.position - transform.position);
-            if (distance.magnitude < 0.5f) 
+            if (distance.magnitude < entityManager.distanceToKill) 
             {
                 entityManager.paperEntities[i].Die();
                 return Vector2.zero;
@@ -99,7 +104,7 @@ public class Entity : MonoBehaviour
             return Vector2.zero;
             
         Vector2 minDistance = (Vector2)(entityManager.scissorsEntities[0].transform.position - transform.position);
-        if (minDistance.magnitude < 0.5f) 
+        if (minDistance.magnitude < entityManager.distanceToKill) 
         {
             entityManager.scissorsEntities[0].Die();
             return Vector2.zero;
@@ -107,7 +112,7 @@ public class Entity : MonoBehaviour
         for (int i = 1; i < entityManager.scissorsEntities.Count; i++)
         {
             Vector2 distance = (Vector2)(entityManager.scissorsEntities[i].transform.position - transform.position);
-            if (distance.magnitude < 0.5f) 
+            if (distance.magnitude < entityManager.distanceToKill) 
             {
                 entityManager.scissorsEntities[i].Die();
                 return Vector2.zero;

@@ -23,6 +23,7 @@ public class EntityManager : MonoBehaviour
     public List<Type> paperPointsFrom = new List<Type>();
     public List<Type> scissorsPointsFrom = new List<Type>();
     public Vector3 weight;
+    public float distanceToKill = 1f;
 
     private void HandlePointsFrom()
     {
