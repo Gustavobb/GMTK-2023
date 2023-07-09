@@ -10,6 +10,7 @@ public class Player : Entity
     [SerializeField] protected float rotationSpeed = 75f;
     [SerializeField] private GameObject sprite;
     [SerializeField] private MenuManager menuManager;
+    [SerializeField] private RulesManager rulesManager;
     private float shootTimer;
 
     private void OnEnable()
@@ -81,6 +82,7 @@ public class Player : Entity
         SoundManager.instance.Play("Lost");
         entityManager.ScreenShake();
         menuManager.CallGameOver();
+        rulesManager.GameOver();
     }
     
     public void OnCollisionEnter2D(Collision2D collision)
