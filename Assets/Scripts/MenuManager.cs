@@ -20,6 +20,16 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void CallMenuButton(){
+        StartCoroutine("MenuButton");
+    }
+    IEnumerator MenuButton()
+    {
+        fade.SetTrigger("Fade");
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(0);
+    }
+
     public void CallGameOver(){
         StartCoroutine("GameOver");
     }
