@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public Animator fade;
+    public SoundManager soundManager;
 
     public void CallPlayButton(){
         StartCoroutine("PlayButton");
@@ -42,6 +43,8 @@ public class MenuManager : MonoBehaviour
     }
 
     public void CallNextLevel(){
+        SoundManager.instance.Stop("TicTac");
+        SoundManager.instance.Play("Win");
         StartCoroutine("NextLevel");
     }
 

@@ -98,13 +98,15 @@ public class RulesManager : MonoBehaviour
         circleAnimator.SetTrigger("Animate");
         UIAnimator.SetTrigger("Animate");
 
-        if (ordered){
+        if (ordered)
+        {
             fluxoAnimator.SetTrigger("ChangeOrder");
             entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
             entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Paper };
             entityManager.paperPointsTo = new List<EntityManager.Type>();
         }
-        else{
+        else
+        {
             fluxoAnimator.SetTrigger("ChangeOrder");
             entityManager.paperPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
             entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Rock };

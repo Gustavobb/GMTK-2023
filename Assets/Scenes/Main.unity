@@ -6477,6 +6477,7 @@ MonoBehaviour:
   distanceToKill: 0.9
   material: {fileID: 2100000, guid: e495e3471d5fa3d4f90e6dd1c89cbc84, type: 2}
   diePrefab: {fileID: 674112369010508045, guid: dd262b72424f9b5498139d88a526f090, type: 3}
+  menuManager: {fileID: 1109323465}
 --- !u!1 &2087865019
 GameObject:
   m_ObjectHideFlags: 0
