@@ -9,7 +9,7 @@ public class RulesManager : MonoBehaviour
 {
     public EntityManager entityManager;
 
-    public Animator fluxoAnimator, fluxoAnimator2;
+    public Animator fluxoAnimator, fluxoAnimator2, circleAnimator, UIAnimator;
     public GameObject fluxo;
 
     private bool ordered;
@@ -17,10 +17,11 @@ public class RulesManager : MonoBehaviour
     public Image fillTimer;
 
     public float ruleCooldown;
-    private float ruleTimer, startTimer;
+    private float ruleTimer, startTimer, previousStartTimer;
     public static bool onGame;
     public Text countDownText;
     private bool startTimerBool = false;
+    private bool animating = false;
 
     [SerializeField] protected SoundManager soundManager;
 
@@ -44,17 +45,29 @@ public class RulesManager : MonoBehaviour
         {
             if(ordered) fillTimer.fillAmount = Mathf.InverseLerp(0, ruleCooldown, ruleTimer-Time.time);
             else fillTimer.fillAmount = Mathf.InverseLerp(ruleCooldown, 0, ruleTimer-Time.time);
+            float timeLeft = ruleTimer - Time.time;
+            if (timeLeft < 2f && !animating)
+            {
+                soundManager.Play("TicTac");
+                circleAnimator.SetTrigger("Pulse");
+                UIAnimator.SetTrigger("Pulse");
+                animating = true;
+            }
+
             if (Time.time >= ruleTimer)
             {
                 ordered = !ordered;
                 UpdateRules();
+                animating = false;
                 ruleTimer = Time.time + ruleCooldown;
             }
         }
         else
         {
+            previousStartTimer = startTimer;
             startTimer -= Time.deltaTime;
-            if (startTimer < 1) countDownText.text = "GO!";
+            if (System.Math.Round(startTimer) != System.Math.Round(previousStartTimer)) soundManager.Play("Tic");
+            if (startTimer <= .5f) countDownText.text = "GO!";
             else countDownText.text = System.Math.Round(startTimer).ToString();
             if (startTimer <= 0)
             {
@@ -65,16 +78,26 @@ public class RulesManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        soundManager.Stop("TicTac");
+    }
+
     private IEnumerator StartTimer()
     {
+        soundManager.Play("Tic");
         yield return new WaitForSeconds(1f);
         startTimerBool = true;
     }
 
     private void UpdateRules()
     {
+        soundManager.Stop("TicTac");
         SoundManager.instance.Play("Change_flux");
         fluxoAnimator2.SetTrigger("Animate");
+        circleAnimator.SetTrigger("Animate");
+        UIAnimator.SetTrigger("Animate");
+
         if (ordered){
             fluxoAnimator.SetTrigger("ChangeOrder");
             entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };

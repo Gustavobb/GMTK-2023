@@ -46,9 +46,9 @@ public class Entity : MonoBehaviour
 
     protected virtual Vector2 RandomDirection()
     {
-        if (velocity.magnitude > 0.2f) return Vector2.zero;
+        if (velocity.magnitude > 0.1f) return Vector2.zero;
 
-        Random.InitState((int) (Time.time % 20f) + (int)type + (int)transform.position.x + (int)transform.position.y);
+        Random.InitState((int) (Time.time % 30f) + (int)type + (int)transform.position.x + (int)transform.position.y);
         Vector2 result = Random.insideUnitCircle;
         return result;
     }
@@ -269,5 +269,6 @@ public class Entity : MonoBehaviour
         entityManager.Kill(transform);
         SoundManager.instance.Play("Enemy_death");
         gameObject.SetActive(false);
+        entityManager.checkWin();
     }
 }

@@ -40,4 +40,15 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void CallNextLevel(){
+        StartCoroutine("NextLevel");
+    }
+
+    IEnumerator NextLevel()
+    {
+        fade.SetTrigger("Fade");
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
 }

@@ -1010,7 +1010,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 811462406}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!50 &350691709
 Rigidbody2D:
@@ -1649,14 +1648,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   velocityArrowSprite: {fileID: 0}
-  soundManager: {fileID: 0}
   type: 2
   projectilePrefab: {fileID: 5748668974037795983, guid: 106d0e0f9dc7de74391d518d11632715, type: 3}
   shootInterval: 1.5
   rotationSpeed: 130
   sprite: {fileID: 1586594287}
   menuManager: {fileID: 1109323465}
-  rulesManager: {fileID: 1785989893}
 --- !u!50 &446719381
 Rigidbody2D:
   serializedVersion: 4
@@ -1907,7 +1904,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 415101629}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!58 &518927705
 CircleCollider2D:
@@ -2112,7 +2108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ca7b9d194b2a74c96885755475c214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  camera: {fileID: 519420031}
   material: {fileID: 2100000, guid: e495e3471d5fa3d4f90e6dd1c89cbc84, type: 2}
   rawImage: {fileID: 1196616787}
 --- !u!1 &551365244
@@ -2331,7 +2327,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 47763406}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!58 &563889371
 CircleCollider2D:
@@ -2534,7 +2529,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 1673991847}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!50 &693363204
 Rigidbody2D:
@@ -2684,7 +2678,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 412225119}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!50 &778547835
 Rigidbody2D:
@@ -3287,7 +3280,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 435856066}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!1 &1109323464
 GameObject:
@@ -3814,7 +3806,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 210825791}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!58 &1205350840
 CircleCollider2D:
@@ -4546,7 +4537,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 1006085248}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!50 &1449938969
 Rigidbody2D:
@@ -5227,7 +5217,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 551365244}
-  soundManager: {fileID: 0}
   type: 0
 --- !u!50 &1768980678
 Rigidbody2D:
@@ -5357,7 +5346,6 @@ MonoBehaviour:
   fillTimer: {fileID: 335710180}
   ruleCooldown: 8
   countDownText: {fileID: 2014389430}
-  soundManager: {fileID: 0}
 --- !u!4 &1785989894
 Transform:
   m_ObjectHideFlags: 0
@@ -6477,6 +6465,7 @@ MonoBehaviour:
   distanceToKill: 0.9
   material: {fileID: 2100000, guid: e495e3471d5fa3d4f90e6dd1c89cbc84, type: 2}
   diePrefab: {fileID: 674112369010508045, guid: dd262b72424f9b5498139d88a526f090, type: 3}
+  menuManager: {fileID: 1109323465}
 --- !u!1 &2087865019
 GameObject:
   m_ObjectHideFlags: 0
