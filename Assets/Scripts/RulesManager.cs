@@ -17,7 +17,7 @@ public class RulesManager : MonoBehaviour
     public Image fillTimer;
 
     public float ruleCooldown;
-    private float ruleTimer, startTimer;
+    private float ruleTimer, startTimer, previousStartTimer;
     public static bool onGame;
     public Text countDownText;
     private bool startTimerBool = false;
@@ -48,6 +48,7 @@ public class RulesManager : MonoBehaviour
             float timeLeft = ruleTimer - Time.time;
             if (timeLeft < 2f && !animating)
             {
+                soundManager.Play("TicTac");
                 circleAnimator.SetTrigger("Pulse");
                 UIAnimator.SetTrigger("Pulse");
                 animating = true;
@@ -63,8 +64,10 @@ public class RulesManager : MonoBehaviour
         }
         else
         {
+            previousStartTimer = startTimer;
             startTimer -= Time.deltaTime;
-            if (startTimer < 1) countDownText.text = "GO!";
+            if (System.Math.Round(startTimer) != System.Math.Round(previousStartTimer)) soundManager.Play("Tic");
+            if (startTimer <= .5f) countDownText.text = "GO!";
             else countDownText.text = System.Math.Round(startTimer).ToString();
             if (startTimer <= 0)
             {
@@ -75,14 +78,21 @@ public class RulesManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        soundManager.Stop("TicTac");
+    }
+
     private IEnumerator StartTimer()
     {
+        soundManager.Play("Tic");
         yield return new WaitForSeconds(1f);
         startTimerBool = true;
     }
 
     private void UpdateRules()
     {
+        soundManager.Stop("TicTac");
         SoundManager.instance.Play("Change_flux");
         fluxoAnimator2.SetTrigger("Animate");
         circleAnimator.SetTrigger("Animate");
