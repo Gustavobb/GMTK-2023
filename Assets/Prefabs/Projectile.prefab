@@ -51,32 +51,7 @@ MonoBehaviour:
   lifetime: 1
   sprite: {fileID: 5906626359261108330}
   diePrefab: {fileID: 4315298992405885214, guid: 41f36bfc0cfe77844889ea48c48106ca, type: 3}
---- !u!61 &6571438140672901691
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5748668974037795978}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.004535347, y: 0.030613586}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.85486907, y: 0.8571366}
-  m_EdgeRadius: 0
+  entityManager: {fileID: 0}
 --- !u!50 &931512085647490712
 Rigidbody2D:
   serializedVersion: 4

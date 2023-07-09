@@ -7,12 +7,11 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject sprite;
     public GameObject diePrefab;
 
-    [SerializeField] private EntityManager entityManager;
+    public EntityManager entityManager;
 
     private void Start()
     {
         // Destroy(gameObject, lifetime);
-        entityManager = GameObject.Find("[EntityManager]").GetComponent<EntityManager>();
     }
 
     private void Update()

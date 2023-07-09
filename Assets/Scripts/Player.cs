@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : Entity
 {
 
-    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Projectile projectilePrefab;
     [SerializeField] private float shootInterval = 3f;
     [SerializeField] protected float rotationSpeed = 75f;
     [SerializeField] private GameObject sprite;
@@ -56,7 +56,8 @@ public class Player : Entity
     private void ShootProjectile()
     {
         Vector3 spawnPosition = transform.position;
-        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, sprite.transform.rotation);
+        Projectile projectile = Instantiate(projectilePrefab, spawnPosition, sprite.transform.rotation);
+        projectile.entityManager = entityManager;
     }
 
     protected override void Move()
