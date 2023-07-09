@@ -78,6 +78,7 @@ public class Player : Entity
     public override void Die()
     {
         base.Die();
+        SoundManager.instance.Play("Lost");
         entityManager.ScreenShake();
         menuManager.CallGameOver();
     }
