@@ -9,6 +9,7 @@ public class Player : Entity
     [SerializeField] private float shootInterval = 3f;
     [SerializeField] protected float rotationSpeed = 75f;
     [SerializeField] private GameObject sprite;
+    [SerializeField] private MenuManager menuManager;
     private float shootTimer;
 
     private void OnEnable()
@@ -78,6 +79,7 @@ public class Player : Entity
     {
         base.Die();
         entityManager.ScreenShake();
+        menuManager.CallGameOver();
     }
     
     public void OnCollisionEnter2D(Collision2D collision)
