@@ -501,7 +501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &263785200
 Transform:
   m_ObjectHideFlags: 0
@@ -723,7 +723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &315904133
 Transform:
   m_ObjectHideFlags: 0
@@ -1123,9 +1123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2201e5883023843be57bee82287c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.2
   friction: 0.04
-  MAX_SPEED: 0.3
+  MAX_SPEED: 0.5
   radius: 5
   _rigidbody2D: {fileID: 350691709}
   entityManager: {fileID: 2079706919}
@@ -1133,6 +1133,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 811462406}
+  type: 0
 --- !u!50 &350691709
 Rigidbody2D:
   serializedVersion: 4
@@ -1214,14 +1215,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350691707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.92, y: 0.75, z: 0}
+  m_LocalPosition: {x: -4.71, y: 2.62, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 338942981}
   - {fileID: 811462407}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &350691713
 CircleCollider2D:
@@ -1340,7 +1341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &362606779
 Transform:
   m_ObjectHideFlags: 0
@@ -1535,7 +1536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &412846649
 Transform:
   m_ObjectHideFlags: 0
@@ -1856,7 +1857,7 @@ MonoBehaviour:
   velocityArrowSprite: {fileID: 0}
   type: 2
   projectilePrefab: {fileID: 5748668974037795978, guid: 106d0e0f9dc7de74391d518d11632715, type: 3}
-  shootInterval: 3
+  shootInterval: 1.5
   rotationSpeed: 130
   sprite: {fileID: 1586594287}
 --- !u!50 &446719381
@@ -2049,6 +2050,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 415101629}
+  type: 0
 --- !u!58 &518927705
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2153,7 +2155,7 @@ Transform:
   - {fileID: 322431648}
   - {fileID: 415101631}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -2555,6 +2557,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 47763406}
+  type: 0
 --- !u!58 &563889371
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2830,9 +2833,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2201e5883023843be57bee82287c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.2
   friction: 0.04
-  MAX_SPEED: 0.2
+  MAX_SPEED: 0.5
   radius: 5
   _rigidbody2D: {fileID: 693363204}
   entityManager: {fileID: 2079706919}
@@ -2840,6 +2843,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 1673991847}
+  type: 0
 --- !u!50 &693363204
 Rigidbody2D:
   serializedVersion: 4
@@ -2978,9 +2982,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2201e5883023843be57bee82287c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.2
   friction: 0.04
-  MAX_SPEED: 0.2
+  MAX_SPEED: 0.5
   radius: 5
   _rigidbody2D: {fileID: 778547835}
   entityManager: {fileID: 2079706919}
@@ -2988,6 +2992,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 412225119}
+  type: 0
 --- !u!50 &778547835
 Rigidbody2D:
   serializedVersion: 4
@@ -3069,7 +3074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778547832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.06, y: -3.05, z: 0}
+  m_LocalPosition: {x: -4.08, y: 0.38, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3481,7 +3486,7 @@ Transform:
   - {fileID: 1301564000}
   - {fileID: 435856068}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1104371293
 MonoBehaviour:
@@ -3505,6 +3510,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 435856066}
+  type: 0
 --- !u!1 &1109323464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,7 +3619,7 @@ RectTransform:
   m_Children:
   - {fileID: 1834950945}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3736,7 +3742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1189337688
 Transform:
   m_ObjectHideFlags: 0
@@ -3945,6 +3951,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 210825791}
+  type: 0
 --- !u!58 &1205350840
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4049,7 +4056,7 @@ Transform:
   - {fileID: 2061720597}
   - {fileID: 210825793}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1301563999
 GameObject:
@@ -4329,7 +4336,7 @@ RectTransform:
   - {fileID: 1430693073}
   - {fileID: 1196616784}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4644,9 +4651,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a55e4845e1af3b44b7571bc9e38e859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.2
   friction: 0.04
-  MAX_SPEED: 0.2
+  MAX_SPEED: 0.5
   radius: 5
   _rigidbody2D: {fileID: 1449938969}
   entityManager: {fileID: 2079706919}
@@ -4654,6 +4661,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 1006085248}
+  type: 0
 --- !u!50 &1449938969
 Rigidbody2D:
   serializedVersion: 4
@@ -4735,7 +4743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449938966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.44, y: -2.96, z: 0}
+  m_LocalPosition: {x: -0.73, y: 2.42, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5113,7 +5121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1622400948
 Transform:
   m_ObjectHideFlags: 0
@@ -5407,9 +5415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a55e4845e1af3b44b7571bc9e38e859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.2
   friction: 0.04
-  MAX_SPEED: 0.2
+  MAX_SPEED: 0.5
   radius: 5
   _rigidbody2D: {fileID: 1768980678}
   entityManager: {fileID: 2079706919}
@@ -5417,6 +5425,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   velocityArrowSprite: {fileID: 551365244}
+  type: 0
 --- !u!50 &1768980678
 Rigidbody2D:
   serializedVersion: 4
@@ -6260,7 +6269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2066450176
 Transform:
   m_ObjectHideFlags: 0
@@ -6407,8 +6416,8 @@ MonoBehaviour:
   rockPointsFrom: 
   paperPointsFrom: 
   scissorsPointsFrom: 
-  weight: {x: 1, y: 1, z: 1}
-  distanceToKill: 0.09
+  weight: {x: 0.8, y: 1.25, z: 1}
+  distanceToKill: 0.9
 --- !u!1 &2087865019
 GameObject:
   m_ObjectHideFlags: 0

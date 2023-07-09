@@ -12,6 +12,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected EntityManager entityManager;
     [SerializeField] protected LayerMask obstacleLayerMask;
     [SerializeField] protected GameObject velocityArrowSprite;
+    public EntityManager.Type type;
     protected Vector2 velocity;
     
     protected virtual void FixedUpdate()
@@ -23,7 +24,7 @@ public class Entity : MonoBehaviour
     {
         Vector2 curr = SeekTargets() * entityManager.weight.x + SeekNonTargets() * entityManager.weight.y;
         SeekObstacles(ref curr);
-        velocity += curr.normalized * speed * Time.deltaTime;
+        velocity += curr * speed * Time.deltaTime;
         Debug.DrawRay(transform.position, velocity.normalized, Color.red);
         
         if (velocity != Vector2.zero)
