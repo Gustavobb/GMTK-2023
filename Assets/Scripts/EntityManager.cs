@@ -26,6 +26,7 @@ public class EntityManager : MonoBehaviour
     public float distanceToKill = 1f;
     public Material material;
     public GameObject diePrefab;
+    public MenuManager menuManager;
 
     private void Start()
     {
@@ -78,6 +79,13 @@ public class EntityManager : MonoBehaviour
     {
         Instantiate(diePrefab, transform.position, Quaternion.identity);
         ScreenShake();
+    }
+
+    public void checkWin(){
+        print(paperEntities.Count);
+        if (paperEntities.Count == 0 & rockEntities.Count == 0){
+            menuManager.CallNextLevel();
+        }
     }
 
     public IEnumerator ScreenShakeCoroutine()

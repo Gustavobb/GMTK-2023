@@ -269,5 +269,6 @@ public class Entity : MonoBehaviour
         entityManager.Kill(transform);
         SoundManager.instance.Play("Enemy_death");
         gameObject.SetActive(false);
+        entityManager.checkWin();
     }
 }
