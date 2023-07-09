@@ -12,8 +12,16 @@ public class Entity : MonoBehaviour
     [SerializeField] protected EntityManager entityManager;
     [SerializeField] protected LayerMask obstacleLayerMask;
     [SerializeField] protected GameObject velocityArrowSprite;
+    [SerializeField] protected SoundManager soundManager;
     public EntityManager.Type type;
     protected Vector2 velocity;
+
+    protected virtual void Awake()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        entityManager = FindObjectOfType<EntityManager>();
+        soundManager = FindObjectOfType<SoundManager>();
+    }
 
     protected virtual void FixedUpdate()
     {
@@ -259,6 +267,7 @@ public class Entity : MonoBehaviour
     {
         velocity = Vector2.zero;
         entityManager.Kill(transform);
+        SoundManager.instance.Play("Enemy_death");
         gameObject.SetActive(false);
     }
 }

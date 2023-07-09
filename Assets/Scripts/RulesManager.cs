@@ -23,6 +23,8 @@ public class RulesManager : MonoBehaviour
     private bool startTimerBool = false;
     private bool animating = false;
 
+    [SerializeField] protected SoundManager soundManager;
+
     private void Start()
     {  
         onGame = false;
@@ -32,6 +34,7 @@ public class RulesManager : MonoBehaviour
         entityManager.paperPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
         entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Rock };
         entityManager.rockPointsTo = new List<EntityManager.Type>();
+        soundManager = FindObjectOfType<SoundManager>();
         StartCoroutine(StartTimer());
     }
 
@@ -80,6 +83,7 @@ public class RulesManager : MonoBehaviour
 
     private void UpdateRules()
     {
+        SoundManager.instance.Play("Change_flux");
         fluxoAnimator2.SetTrigger("Animate");
         circleAnimator.SetTrigger("Animate");
         UIAnimator.SetTrigger("Animate");
