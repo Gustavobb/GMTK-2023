@@ -505,7 +505,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'gubrebababa
+  m_Text: 'gubebra
 
     mikomoares
 
@@ -954,6 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 222836422}
+  soundManager: {fileID: 0}
 --- !u!114 &1081563246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,7 +1161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.000030518, y: 92.7}
+  m_AnchoredPosition: {x: -0.000030518, y: 92.70001}
   m_SizeDelta: {x: 536.19, y: 48.05}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1225361708

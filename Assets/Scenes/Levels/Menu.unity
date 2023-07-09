@@ -237,7 +237,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1390734629}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &264045371
@@ -525,7 +525,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b7a4c9229c508a4397a27ce6da1e916, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1af2ebb360cf1e6488168cb6ae1804f7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -876,7 +876,7 @@ RectTransform:
   - {fileID: 936899056}
   - {fileID: 1084529546}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -896,6 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 1084529547}
+  soundManager: {fileID: 0}
 --- !u!1 &780132200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1055,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Tag
 
-    Paper Scissor'
+    Paper Scissors'
 --- !u!222 &936899058
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1446,7 +1447,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963112527
 GameObject:
@@ -1514,7 +1515,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2088907211
 GameObject:
@@ -1552,7 +1553,7 @@ Transform:
   - {fileID: 350365727}
   - {fileID: 1618593379}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2088907213
 Animator:
@@ -1583,19 +1584,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5940513338756820190, guid: de153669656d1074382a263c038f23ca, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5940513338756820190, guid: de153669656d1074382a263c038f23ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.30201316
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940513338756820190, guid: de153669656d1074382a263c038f23ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2963666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940513338756820190, guid: de153669656d1074382a263c038f23ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.14188117
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940513338756820190, guid: de153669656d1074382a263c038f23ca, type: 3}
       propertyPath: m_LocalRotation.w

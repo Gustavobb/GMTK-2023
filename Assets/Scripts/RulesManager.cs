@@ -30,7 +30,7 @@ public class RulesManager : MonoBehaviour
     {  
         onGame = false;
         startTimer = 3f;
-        ruleTimer = Time.time + ruleCooldown;
+        ruleTimer = (float) System.Math.Round(Time.time + ruleCooldown);
         countDownText.text = "3";
         if(levelType == 1){
             entityManager.rockPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
@@ -48,7 +48,6 @@ public class RulesManager : MonoBehaviour
             entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Paper };
             entityManager.paperPointsTo = new List<EntityManager.Type>();
         }
-        soundManager = FindObjectOfType<SoundManager>();
         StartCoroutine(StartTimer());
     }
 
@@ -62,7 +61,7 @@ public class RulesManager : MonoBehaviour
             float timeLeft = ruleTimer - Time.time;
             if (timeLeft < 2f && !animating)
             {
-                soundManager.Play("TicTac");
+                SoundManager.instance.Play("TacTac");
                 circleAnimator.SetTrigger("Pulse");
                 UIAnimator.SetTrigger("Pulse");
                 animating = true;
@@ -73,40 +72,40 @@ public class RulesManager : MonoBehaviour
                 ordered = !ordered;
                 UpdateRules();
                 animating = false;
-                ruleTimer = Time.time + ruleCooldown;
+                ruleTimer = (float) System.Math.Round(Time.time + ruleCooldown);
             }
         }
         else
         {
             previousStartTimer = startTimer;
             startTimer -= Time.deltaTime;
-            if (System.Math.Round(startTimer) != System.Math.Round(previousStartTimer)) soundManager.Play("Tic");
+            if (System.Math.Round(startTimer) != System.Math.Round(previousStartTimer)) SoundManager.instance.Play("Tic");
             if (startTimer <= .5f) countDownText.text = "GO!";
             else countDownText.text = System.Math.Round(startTimer).ToString();
             if (startTimer <= 0)
             {
                 onGame = true;
                 countDownText.text = "";
-                ruleTimer = Time.time + ruleCooldown;
+                ruleTimer = (float) System.Math.Round(Time.time + ruleCooldown);
             }
         }
     }
 
     public void GameOver()
     {
-        soundManager.Stop("TicTac");
+        SoundManager.instance.Stop("TacTac");
     }
 
     private IEnumerator StartTimer()
     {
-        soundManager.Play("Tic");
+        SoundManager.instance.Play("Tic");
         yield return new WaitForSeconds(1f);
         startTimerBool = true;
     }
 
     private void UpdateRules()
     {
-        soundManager.Stop("TicTac");
+        SoundManager.instance.Stop("TacTac");
         SoundManager.instance.Play("Change_flux");
         fluxoAnimator2.SetTrigger("Animate");
         circleAnimator.SetTrigger("Animate");
@@ -124,7 +123,7 @@ public class RulesManager : MonoBehaviour
             entityManager.scissorsPointsTo = new List<EntityManager.Type> ();
             entityManager.paperPointsTo = new List<EntityManager.Type>();
         }
-        if (levelType == 2 & !ordered){
+        else if (levelType == 2 & !ordered){
             fluxoAnimator.SetTrigger("ChangeOrder2");
             entityManager.rockPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
             entityManager.scissorsPointsTo = new List<EntityManager.Type>();

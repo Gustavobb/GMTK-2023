@@ -45,9 +45,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.075
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -212,12 +212,12 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Tic
-    clip: {fileID: 8300000, guid: 7b7a4c9229c508a4397a27ce6da1e916, type: 3}
+    clip: {fileID: 8300000, guid: 1af2ebb360cf1e6488168cb6ae1804f7, type: 3}
     volume: 0.806
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: TicTac
+  - name: TacTac
     clip: {fileID: 8300000, guid: 6e01caebb67a37540bff3b918f8e3284, type: 3}
     volume: 0.806
     pitch: 2
@@ -226,7 +226,7 @@ MonoBehaviour:
   musics:
   - name: Main_music
     clip: {fileID: 8300000, guid: a9b89b7d772cb0b448f6ba51d2c603b7, type: 3}
-    volume: 0.3
+    volume: 0.2
     pitch: 1
     loop: 1
     source: {fileID: 0}

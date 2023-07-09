@@ -32,6 +32,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public void CallGameOver(){
+        SoundManager.instance.Stop("TacTac");
         StartCoroutine("GameOver");
     }
 
@@ -43,7 +44,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public void CallNextLevel(){
-        SoundManager.instance.Stop("TicTac");
+        SoundManager.instance.Stop("TacTac");
         SoundManager.instance.Play("Win");
         StartCoroutine("NextLevel");
     }

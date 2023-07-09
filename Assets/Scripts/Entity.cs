@@ -18,9 +18,6 @@ public class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        entityManager = FindObjectOfType<EntityManager>();
-        soundManager = FindObjectOfType<SoundManager>();
     }
 
     protected virtual void FixedUpdate()
@@ -46,7 +43,7 @@ public class Entity : MonoBehaviour
 
     protected virtual Vector2 RandomDirection()
     {
-        if (velocity.magnitude > 0.1f) return Vector2.zero;
+        if (velocity.magnitude > 0.05f) return Vector2.zero;
 
         Random.InitState((int) (Time.time % 30f) + (int)type + (int)transform.position.x + (int)transform.position.y);
         Vector2 result = Random.insideUnitCircle;
