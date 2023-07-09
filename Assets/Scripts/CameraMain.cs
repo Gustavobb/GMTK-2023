@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CameraMain : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cam;
     [SerializeField] private Material material;
     [SerializeField] private RawImage rawImage;
 
