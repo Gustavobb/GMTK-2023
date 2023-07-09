@@ -7,6 +7,7 @@ public class Scissors : Entity
     private void OnEnable()
     {
         entityManager.scissorsEntities.Add(this);
+        type = EntityManager.Type.Scissors;
     }
 
     private void OnDisable()

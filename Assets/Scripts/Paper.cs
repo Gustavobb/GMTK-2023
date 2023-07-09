@@ -7,6 +7,7 @@ public class Paper : Entity
     private void OnEnable()
     {
         entityManager.paperEntities.Add(this);
+        type = EntityManager.Type.Paper;
     }
 
     private void OnDisable()

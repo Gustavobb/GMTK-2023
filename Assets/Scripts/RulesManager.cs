@@ -47,7 +47,7 @@ public class RulesManager : MonoBehaviour
             fluxoAnimator.SetTrigger("ChangeOrder");
             entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
             entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Paper };
-            entityManager.paperPointsTo = new List<EntityManager.Type> {};
+            entityManager.paperPointsTo = new List<EntityManager.Type>();
         }
         else{
             fluxoAnimator.SetTrigger("ChangeOrder");

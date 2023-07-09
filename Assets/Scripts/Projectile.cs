@@ -7,9 +7,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] private GameObject sprite;
     public GameObject diePrefab;
 
+    [SerializeField] private EntityManager entityManager;
+
     private void Start()
     {
         // Destroy(gameObject, lifetime);
+        entityManager = GameObject.Find("[EntityManager]").GetComponent<EntityManager>();
     }
 
     private void Update()
@@ -33,9 +36,12 @@ public class Projectile : MonoBehaviour
             Die();
         }
         else if (collision.GetComponent<Entity>() != null){
-            collision.GetComponent<Entity>().Die();
-            // this.gameObject.SetActive(false);
+            if(entityManager.scissorsPointsTo.Contains(collision.GetComponent<Entity>().type)){ 
+                print(collision.GetComponent<Entity>().type);
+                collision.GetComponent<Entity>().Die();
+            }
             Die();
+            //this.gameObject.SetActive(false);
         }
     }
 }
