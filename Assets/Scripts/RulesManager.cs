@@ -22,6 +22,7 @@ public class RulesManager : MonoBehaviour
     public Text countDownText;
     private bool startTimerBool = false;
     private bool animating = false;
+    public int levelType;
 
     [SerializeField] protected SoundManager soundManager;
 
@@ -31,9 +32,22 @@ public class RulesManager : MonoBehaviour
         startTimer = 3f;
         ruleTimer = Time.time + ruleCooldown;
         countDownText.text = "3";
-        entityManager.paperPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
-        entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Rock };
-        entityManager.rockPointsTo = new List<EntityManager.Type>();
+        if(levelType == 1){
+            entityManager.rockPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
+            entityManager.scissorsPointsTo = new List<EntityManager.Type> ();
+            entityManager.paperPointsTo = new List<EntityManager.Type>();
+
+        }
+        else if (levelType == 2){
+            entityManager.rockPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
+            entityManager.scissorsPointsTo = new List<EntityManager.Type>();
+            entityManager.paperPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
+        }
+        else{
+            entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
+            entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Paper };
+            entityManager.paperPointsTo = new List<EntityManager.Type>();
+        }
         soundManager = FindObjectOfType<SoundManager>();
         StartCoroutine(StartTimer());
     }
@@ -98,7 +112,31 @@ public class RulesManager : MonoBehaviour
         circleAnimator.SetTrigger("Animate");
         UIAnimator.SetTrigger("Animate");
 
-        if (ordered)
+        if (levelType == 1 & ordered){
+            fluxoAnimator.SetTrigger("ChangeOrder1");
+            entityManager.rockPointsTo = new List<EntityManager.Type>();
+            entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Rock };
+            entityManager.paperPointsTo = new List<EntityManager.Type>();
+        }
+        else if (levelType == 1 & !ordered){
+            fluxoAnimator.SetTrigger("ChangeOrder1");
+            entityManager.rockPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
+            entityManager.scissorsPointsTo = new List<EntityManager.Type> ();
+            entityManager.paperPointsTo = new List<EntityManager.Type>();
+        }
+        if (levelType == 2 & !ordered){
+            fluxoAnimator.SetTrigger("ChangeOrder2");
+            entityManager.rockPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
+            entityManager.scissorsPointsTo = new List<EntityManager.Type>();
+            entityManager.paperPointsTo = new List<EntityManager.Type>{ EntityManager.Type.Scissors };
+        }
+        else if (levelType == 2 & ordered){
+            fluxoAnimator.SetTrigger("ChangeOrder2");
+            entityManager.rockPointsTo = new List<EntityManager.Type>();
+            entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Rock, EntityManager.Type.Paper};
+            entityManager.paperPointsTo = new List<EntityManager.Type>();
+        }
+        else if (!ordered)
         {
             fluxoAnimator.SetTrigger("ChangeOrder");
             entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
