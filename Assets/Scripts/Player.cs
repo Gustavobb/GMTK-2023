@@ -73,6 +73,12 @@ public class Player : Entity
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);
     }
 
+    public override void Die()
+    {
+        base.Die();
+        entityManager.ScreenShake();
+    }
+    
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.GetComponent<Entity>() != null){

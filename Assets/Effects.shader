@@ -7,6 +7,7 @@ Shader "Custom/Effects"
 		_DoodleFrameTime("Doodle Frame Time", Float) = 0.2
 		_DoodleFrameCount("Doodle Frame Count", Int) = 24
 		_DoodleNoiseScale("Doodle Noise Scale", vector) = (35, 35, 1, 1)
+        _ScreenShake("Screen Shake", Range(0, 1)) = 0
     }
     SubShader
     {
@@ -43,6 +44,7 @@ Shader "Custom/Effects"
 			float _DoodleFrameTime;
 			int _DoodleFrameCount;
 			float2 _DoodleNoiseScale;
+            float _ScreenShake;
 
             float random(float2 seed)
             {
@@ -76,15 +78,24 @@ Shader "Custom/Effects"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // DOODLE EFFECT
+                float2 uv = i.uv;
+                float amount = sin(dot(_Time.y, float2(12.9898, 78.233)) * 1) * 0.25;
+                float2 shake = float2(amount * 0.007, amount * 0.007) * _ScreenShake;
+                uv += shake;
+
                 float2 offset = 0.0;
-				offset = DoodleTextureOffset(i.uv, _DoodleMaxOffset, _Time.y, _DoodleFrameTime, _DoodleFrameCount,_DoodleNoiseScale); 
+				offset = DoodleTextureOffset(uv, _DoodleMaxOffset, _Time.y, _DoodleFrameTime, _DoodleFrameCount,_DoodleNoiseScale); 
 
-				fixed4 col = tex2D(_MainTex, i.uv + offset);
+				fixed4 col = tex2D(_MainTex, uv + offset);
 
-                float x = (i.uv.x + 4.0 ) * (i.uv.y + 4.0 ) * (_Time.y * 10.0);
+                float x = (uv.x + 4.0 ) * (uv.y + 4.0 ) * (_Time.y * 10.0);
                 fixed4 grain = fmod((fmod(x, 13.0) + 1.0) * (fmod(x, 123.0) + 1.0), 0.01) - 0.005;
                 col += grain * 10.0;
+
+                float2 pos = uv - float2(0.5, 0.5);
+                float len = length(pos);
+                float vignette = smoothstep(0.9, 0.4, len);
+                col *= vignette;
                 
                 return col;
             }

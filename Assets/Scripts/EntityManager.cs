@@ -24,6 +24,13 @@ public class EntityManager : MonoBehaviour
     public List<Type> scissorsPointsFrom = new List<Type>();
     public Vector3 weight;
     public float distanceToKill = 1f;
+    public Material material;
+    public GameObject diePrefab;
+
+    private void Start()
+    {
+        material.SetFloat("_ScreenShake", 0f);
+    }
 
     private void HandlePointsFrom()
     {
@@ -60,5 +67,23 @@ public class EntityManager : MonoBehaviour
     private void Update()
     {
         HandlePointsFrom();
+    }
+
+    public void ScreenShake()
+    {
+        StartCoroutine(ScreenShakeCoroutine());
+    }
+
+    public void Kill(Transform transform)
+    {
+        Instantiate(diePrefab, transform.position, Quaternion.identity);
+        ScreenShake();
+    }
+
+    public IEnumerator ScreenShakeCoroutine()
+    {
+        material.SetFloat("_ScreenShake", 1f);
+        yield return new WaitForSeconds(0.2f);
+        material.SetFloat("_ScreenShake", 0f);
     }
 }
