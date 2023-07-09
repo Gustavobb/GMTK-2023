@@ -260,5 +260,6 @@ public class Entity : MonoBehaviour
         velocity = Vector2.zero;
         entityManager.Kill(transform);
         gameObject.SetActive(false);
+        entityManager.checkWin();
     }
 }
