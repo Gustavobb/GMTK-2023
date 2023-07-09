@@ -46,7 +46,7 @@ public class Player : Entity
     protected void Update()
     {
         shootTimer -= Time.deltaTime;
-        if (shootTimer <= 0f)
+        if (shootTimer <= 0f & RulesManager.onGame)
         {
             ShootProjectile();
             shootTimer = shootInterval;
