@@ -37,7 +37,6 @@ public class Projectile : MonoBehaviour
         }
         else if (entity != null){
             if(entityManager.scissorsPointsTo.Contains(entity.type)){ 
-                print(entity.type);
                 entity.Die();
             }
             Die();
