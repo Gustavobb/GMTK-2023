@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    [SerializeField] private EntityManager.Type type;
+
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float shootInterval = 3f;
     [SerializeField] protected float rotationSpeed = 75f;
@@ -71,5 +71,15 @@ public class Player : Entity
         velocity *= (1f - friction);
         velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.GetComponent<Entity>() != null){
+            if(entityManager.scissorsPointsTo.Contains(collision.transform.GetComponent<Entity>().type)){ 
+                print(collision.transform.GetComponent<Entity>().type);
+                collision.transform.GetComponent<Entity>().Die();
+            }
+        }
     }
 }

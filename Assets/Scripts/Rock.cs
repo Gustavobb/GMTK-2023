@@ -7,6 +7,7 @@ public class Rock : Entity
     private void OnEnable()
     {
         entityManager.rockEntities.Add(this);
+        type = EntityManager.Type.Rock;
     }
 
     private void OnDisable()
