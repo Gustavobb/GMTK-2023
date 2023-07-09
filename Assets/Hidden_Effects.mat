@@ -31,7 +31,7 @@ Material:
     - _DoodleFrameTime: 0.5
     - _DoodleFreq: 99
     - _DoodleSpeed: 0.3
-    - _ScreenShake: 0
+    - _ScreenShake: 1
     - _SobelThickness: 0.43
     - _SobelThreshold: 0.06
     m_Colors:

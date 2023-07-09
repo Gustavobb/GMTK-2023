@@ -30,14 +30,15 @@ public class Projectile : MonoBehaviour
     {
         if(collision.CompareTag("Player")) return;
 
+        Entity entity = collision.GetComponent<Entity>();
         if(collision.CompareTag("Map")){
             // this.gameObject.SetActive(false);
             Die();
         }
-        else if (collision.GetComponent<Entity>() != null){
-            if(entityManager.scissorsPointsTo.Contains(collision.GetComponent<Entity>().type)){ 
-                print(collision.GetComponent<Entity>().type);
-                collision.GetComponent<Entity>().Die();
+        else if (entity != null){
+            if(entityManager.scissorsPointsTo.Contains(entity.type)){ 
+                print(entity.type);
+                entity.Die();
             }
             Die();
             //this.gameObject.SetActive(false);

@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Move()
     {
-        Vector2 curr = SeekTargets() * entityManager.weight.x + SeekNonTargets() * entityManager.weight.y;
+        Vector2 curr = SeekTargets() * entityManager.weight.x + SeekNonTargets() * entityManager.weight.y + RandomDirection();
         SeekObstacles(ref curr);
         velocity += curr * speed * Time.deltaTime;
         Debug.DrawRay(transform.position, velocity.normalized, Color.red);
@@ -34,6 +34,15 @@ public class Entity : MonoBehaviour
         velocity *= (1f - friction);
         velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);
+    }
+
+    protected virtual Vector2 RandomDirection()
+    {
+        if (velocity.magnitude > 0.2f) return Vector2.zero;
+
+        Random.InitState((int) (Time.time % 20f) + (int)type + (int)transform.position.x + (int)transform.position.y);
+        Vector2 result = Random.insideUnitCircle;
+        return result;
     }
 
     protected virtual Vector2 SeekTargets()

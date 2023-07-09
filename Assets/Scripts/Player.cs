@@ -84,10 +84,11 @@ public class Player : Entity
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.GetComponent<Entity>() != null){
-            if(entityManager.scissorsPointsTo.Contains(collision.transform.GetComponent<Entity>().type)){ 
-                print(collision.transform.GetComponent<Entity>().type);
-                collision.transform.GetComponent<Entity>().Die();
+        Entity entity = collision.transform.GetComponent<Entity>();
+        if (entity != null){
+            if(entityManager.scissorsPointsTo.Contains(entity.type)){ 
+                print(entity.type);
+                entity.Die();
             }
         }
     }

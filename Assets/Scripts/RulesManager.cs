@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Collections;
 [System.Serializable]
 
-
 public class RulesManager : MonoBehaviour
 {
     public EntityManager entityManager;
@@ -21,21 +20,26 @@ public class RulesManager : MonoBehaviour
     private float ruleTimer, startTimer;
     public static bool onGame;
     public Text countDownText;
+    private bool startTimerBool = false;
 
     private void Start()
     {  
         onGame = false;
-        startTimer = Time.time + 3f;
+        startTimer = 3f;
         ruleTimer = Time.time + ruleCooldown;
+        countDownText.text = "3";
         entityManager.paperPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
         entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Rock };
         entityManager.rockPointsTo = new List<EntityManager.Type>();
+        StartCoroutine(StartTimer());
     }
 
     private void Update()
     {   
-        if(onGame){
-            if(ordered)fillTimer.fillAmount = Mathf.InverseLerp(0, ruleCooldown, ruleTimer-Time.time);
+        if (!startTimerBool) return;
+        if(onGame)
+        {
+            if(ordered) fillTimer.fillAmount = Mathf.InverseLerp(0, ruleCooldown, ruleTimer-Time.time);
             else fillTimer.fillAmount = Mathf.InverseLerp(ruleCooldown, 0, ruleTimer-Time.time);
             if (Time.time >= ruleTimer)
             {
@@ -44,14 +48,24 @@ public class RulesManager : MonoBehaviour
                 ruleTimer = Time.time + ruleCooldown;
             }
         }
-        else{
-            countDownText.text = System.Math.Round(startTimer-Time.time).ToString();
-            if (Time.time >= startTimer){
+        else
+        {
+            startTimer -= Time.deltaTime;
+            if (startTimer < 1) countDownText.text = "GO!";
+            else countDownText.text = System.Math.Round(startTimer).ToString();
+            if (startTimer <= 0)
+            {
                 onGame = true;
                 countDownText.text = "";
                 ruleTimer = Time.time + ruleCooldown;
             }
         }
+    }
+
+    private IEnumerator StartTimer()
+    {
+        yield return new WaitForSeconds(1f);
+        startTimerBool = true;
     }
 
     private void UpdateRules()
