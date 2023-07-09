@@ -14,9 +14,10 @@ public class Entity : MonoBehaviour
     [SerializeField] protected GameObject velocityArrowSprite;
     public EntityManager.Type type;
     protected Vector2 velocity;
-    
+
     protected virtual void FixedUpdate()
     {
+        if (!RulesManager.onGame) return;
         Move();
     }
 

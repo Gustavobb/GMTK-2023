@@ -16,26 +16,39 @@ public class RulesManager : MonoBehaviour
 
     public Image fillTimer;
 
-    public float ruleCooldown = 10f;
-    private float ruleTimer;
+    public float ruleCooldown;
+    private float ruleTimer, startTimer;
+    public static bool onGame;
+    public Text countDownText;
 
     private void Start()
     {
+        startTimer = Time.time + 3f;
         ruleTimer = Time.time + ruleCooldown;
-        entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
-        entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Paper };
-        entityManager.paperPointsTo = new List<EntityManager.Type>();
+        entityManager.paperPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
+        entityManager.scissorsPointsTo = new List<EntityManager.Type> { EntityManager.Type.Rock };
+        entityManager.rockPointsTo = new List<EntityManager.Type>();
     }
 
     private void Update()
-    {
-        if(ordered)fillTimer.fillAmount = Mathf.InverseLerp(0, ruleCooldown, ruleTimer-Time.time);
-        else fillTimer.fillAmount = Mathf.InverseLerp(ruleCooldown, 0, ruleTimer-Time.time);
-        if (Time.time >= ruleTimer)
-        {
-            ordered = !ordered;
-            UpdateRules();
-            ruleTimer = Time.time + ruleCooldown;
+    {   
+        if(onGame){
+            if(ordered)fillTimer.fillAmount = Mathf.InverseLerp(0, ruleCooldown, ruleTimer-Time.time);
+            else fillTimer.fillAmount = Mathf.InverseLerp(ruleCooldown, 0, ruleTimer-Time.time);
+            if (Time.time >= ruleTimer)
+            {
+                ordered = !ordered;
+                UpdateRules();
+                ruleTimer = Time.time + ruleCooldown;
+            }
+        }
+        else{
+            countDownText.text = System.Math.Round(startTimer-Time.time).ToString();
+            if (Time.time >= startTimer){
+                onGame = true;
+                countDownText.text = "";
+                ruleTimer = Time.time + ruleCooldown;
+            }
         }
     }
 
