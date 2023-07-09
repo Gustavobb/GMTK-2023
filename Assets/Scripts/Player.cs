@@ -72,4 +72,10 @@ public class Player : Entity
         velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
         _rigidbody2D.MovePosition(_rigidbody2D.position + velocity);
     }
+
+    public override void Die()
+    {
+        base.Die();
+        entityManager.ScreenShake();
+    }
 }

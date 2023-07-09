@@ -50,6 +50,7 @@ MonoBehaviour:
   speed: 8
   lifetime: 1
   sprite: {fileID: 5906626359261108330}
+  diePrefab: {fileID: 4315298992405885214, guid: 41f36bfc0cfe77844889ea48c48106ca, type: 3}
 --- !u!61 &6571438140672901691
 BoxCollider2D:
   m_ObjectHideFlags: 0

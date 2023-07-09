@@ -244,9 +244,10 @@ public class Entity : MonoBehaviour
         curr = Quaternion.Euler(0, 0, rotAngle) * curr;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         velocity = Vector2.zero;
+        entityManager.Kill(transform);
         gameObject.SetActive(false);
     }
 }

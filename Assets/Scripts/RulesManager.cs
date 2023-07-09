@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using System.Collections.Generic;
-
+using System.Collections;
 [System.Serializable]
 
 
@@ -10,7 +10,8 @@ public class RulesManager : MonoBehaviour
 {
     public EntityManager entityManager;
 
-    public Animator fluxoAnimator;
+    public Animator fluxoAnimator, fluxoAnimator2;
+    public GameObject fluxo;
 
     private bool ordered;
 
@@ -41,6 +42,7 @@ public class RulesManager : MonoBehaviour
 
     private void UpdateRules()
     {
+        fluxoAnimator2.SetTrigger("Animate");
         if (ordered){
             fluxoAnimator.SetTrigger("ChangeOrder");
             entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
@@ -55,5 +57,4 @@ public class RulesManager : MonoBehaviour
 
         }
     }
-
 }
