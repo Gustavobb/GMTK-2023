@@ -20,4 +20,14 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void CallGameOver(){
+        StartCoroutine("GameOver");
+    }
+
+    IEnumerator GameOver()
+    {
+        fade.SetTrigger("Fade");
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

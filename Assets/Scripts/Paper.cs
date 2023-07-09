@@ -24,7 +24,6 @@ public class Paper : Entity
         for (int i = 0; i < entityManager.paperPointsTo.Count; i++)
             if (entityManager.paperPointsTo[i] != EntityManager.Type.Paper)
                 HandlePointsTo(entityManager.paperPointsTo[i], ref minDistance, i);
-
         return minDistance.normalized;
     }
 

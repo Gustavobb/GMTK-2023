@@ -23,7 +23,8 @@ public class RulesManager : MonoBehaviour
     public Text countDownText;
 
     private void Start()
-    {
+    {  
+        onGame = false;
         startTimer = Time.time + 3f;
         ruleTimer = Time.time + ruleCooldown;
         entityManager.paperPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };
