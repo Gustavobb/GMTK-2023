@@ -9,7 +9,7 @@ public class RulesManager : MonoBehaviour
 {
     public EntityManager entityManager;
 
-    public Animator fluxoAnimator, fluxoAnimator2;
+    public Animator fluxoAnimator, fluxoAnimator2, circleAnimator, UIAnimator;
     public GameObject fluxo;
 
     private bool ordered;
@@ -21,6 +21,7 @@ public class RulesManager : MonoBehaviour
     public static bool onGame;
     public Text countDownText;
     private bool startTimerBool = false;
+    private bool animating = false;
 
     private void Start()
     {  
@@ -41,10 +42,19 @@ public class RulesManager : MonoBehaviour
         {
             if(ordered) fillTimer.fillAmount = Mathf.InverseLerp(0, ruleCooldown, ruleTimer-Time.time);
             else fillTimer.fillAmount = Mathf.InverseLerp(ruleCooldown, 0, ruleTimer-Time.time);
+            float timeLeft = ruleTimer - Time.time;
+            if (timeLeft < 2f && !animating)
+            {
+                circleAnimator.SetTrigger("Pulse");
+                UIAnimator.SetTrigger("Pulse");
+                animating = true;
+            }
+
             if (Time.time >= ruleTimer)
             {
                 ordered = !ordered;
                 UpdateRules();
+                animating = false;
                 ruleTimer = Time.time + ruleCooldown;
             }
         }
@@ -71,6 +81,9 @@ public class RulesManager : MonoBehaviour
     private void UpdateRules()
     {
         fluxoAnimator2.SetTrigger("Animate");
+        circleAnimator.SetTrigger("Animate");
+        UIAnimator.SetTrigger("Animate");
+
         if (ordered){
             fluxoAnimator.SetTrigger("ChangeOrder");
             entityManager.rockPointsTo = new List<EntityManager.Type> { EntityManager.Type.Scissors };

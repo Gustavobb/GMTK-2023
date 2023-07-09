@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 35713314}
   - component: {fileID: 35713315}
+  - component: {fileID: 35713316}
   m_Layer: 3
   m_Name: Circle
   m_TagString: Map
@@ -172,6 +173,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &35713316
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35713313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8b90a68a4967fe439049258950f6740, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &47763406
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +856,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4371,6 +4392,7 @@ GameObject:
   - component: {fileID: 1430693073}
   - component: {fileID: 1430693075}
   - component: {fileID: 1430693074}
+  - component: {fileID: 1430693076}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -4437,6 +4459,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430693072}
   m_CullTransparentMesh: 1
+--- !u!95 &1430693076
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430693072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 274a64bdd25ce354cac22ac0614dc84f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1449938966
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,6 +5340,8 @@ MonoBehaviour:
   entityManager: {fileID: 2079706919}
   fluxoAnimator: {fileID: 468613351}
   fluxoAnimator2: {fileID: 2129949915}
+  circleAnimator: {fileID: 35713316}
+  UIAnimator: {fileID: 1430693076}
   fluxo: {fileID: 468613349}
   fillTimer: {fileID: 335710180}
   ruleCooldown: 8
@@ -6497,8 +6541,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087865019}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000000026490953, y: -0.000000026490953, z: 0}
   m_LocalScale: {x: 0.3949879, y: 0.3949879, z: 0.3949879}
   m_ConstrainProportionsScale: 0
   m_Children: []
